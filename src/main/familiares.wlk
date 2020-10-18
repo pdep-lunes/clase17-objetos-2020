@@ -38,7 +38,7 @@ class FamiliarAfectivo inherits FamiliarViajero {
 
 class Summer inherits FamiliarAfectivo {
 	override method puedeIrDeAventura(fecha) {
-		return false;
+		return fecha.dayOfWeek() == wednesday;
 	}
 }
 
