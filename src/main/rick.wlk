@@ -3,8 +3,8 @@ import main.familiares.*
 class AcompanianteNoPuedeIrDeAventura inherits Exception {}
 class MuyDementeParaIrDeAventura inherits Exception {}
 
-object rick {
-	var demencia = 60
+class Rick {
+	var demencia
 	
 	method irDeAventurasCon(personaje, fecha) {
 		const acompaniante = self.acompaniante(personaje, fecha);
@@ -46,3 +46,5 @@ object rick {
 		demencia = _demencia
 	}
 }
+
+const rick = new Rick(demencia = 60)
