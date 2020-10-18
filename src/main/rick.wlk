@@ -1,7 +1,10 @@
 import main.familiares.*
 
+class AcompanianteNoPuedeIrDeAventura inherits Exception {}
+class MuyDementeParaIrDeAventura inherits Exception {}
+
 object rick {
-	var demencia
+	var demencia = 60
 	
 	method irDeAventurasCon(personaje, fecha) {
 		const acompaniante = self.acompaniante(personaje, fecha);
@@ -23,18 +26,23 @@ object rick {
 	
 	method validarAcompanianteViajero(acompaniante, fecha) {
 		if (!acompaniante.puedeIrDeAventura(fecha))
-			throw new Exception()
+			throw new AcompanianteNoPuedeIrDeAventura(message="El acompañante no puede viajar el " + fecha.toString())
 	}
 	
 	method alterarDemencia(acompaniante) {
 		const demenciaAportada = acompaniante.demenciaAportada();
-		demencia += demenciaAportada
 		
-		self.validarDemenciaTolerable();
+		self.validarDemenciaTolerable(demenciaAportada);
+		
+		demencia += demenciaAportada
 	}
 	
-	method validarDemenciaTolerable() {
-		if (demencia > 100)
-			throw new Exception()
+	method validarDemenciaTolerable(demenciaAportada) {
+		if (demencia + demenciaAportada > 100)
+			throw new MuyDementeParaIrDeAventura(message="La demencia de Rick es mayor a 100, por lo que no puede viajar")
+	}
+	
+	method setDemencia(_demencia) {
+		demencia = _demencia
 	}
 }
