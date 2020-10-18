@@ -13,9 +13,9 @@ class FamiliarViajero {
 class Morty inherits FamiliarViajero {
 	var saludMental
 	
-	constructor(_saludMental) {
+	constructor(nuevaSaludMental) {
 		demenciaAportada = 50;
-		saludMental = _saludMental;
+		saludMental = nuevaSaludMental;
 	}
 	
 	method vivirAventura() {
@@ -26,9 +26,9 @@ class Morty inherits FamiliarViajero {
 class FamiliarAfectivo inherits FamiliarViajero {
 	var afectoPorRick
 	
-	constructor(_afectoPorRick) {
+	constructor(nuevoAfectoPorRick) {
 		demenciaAportada = -20;
-		afectoPorRick = _afectoPorRick;
+		afectoPorRick = nuevoAfectoPorRick;
 	}
 	
 	method vivirAventura() {

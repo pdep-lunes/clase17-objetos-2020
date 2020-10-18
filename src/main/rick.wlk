@@ -42,8 +42,8 @@ class Rick {
 			throw new MuyDementeParaIrDeAventura(message="La demencia de Rick es mayor a 100, por lo que no puede viajar")
 	}
 	
-	method setDemencia(_demencia) {
-		demencia = _demencia
+	method setDemencia(nuevaDemencia) {
+		demencia = nuevaDemencia
 	}
 }
 
