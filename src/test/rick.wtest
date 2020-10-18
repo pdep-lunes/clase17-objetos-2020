@@ -1,0 +1,31 @@
+import main.rick.*
+import main.familiares.*
+
+describe "irse de aventura" {
+	const rick = new Rick(demencia=60)
+	const summer = new Summer(0)
+	
+	test "debería fallar si la acompañante es summer y la aventura es un miércoles" {
+		const unJueves = new Date(day=15, month=10, year=2020)
+		
+		assert.throwsExceptionWithType(
+			new AcompanianteNoPuedeIrDeAventuraException(),
+			{ rick.irDeAventurasCon(summer, unJueves) }
+		)
+	}
+	
+	test "debería disminuir su demencia en 20 si la acompañanate es summer y no es miercoles" {
+		const unMiercoles = new Date(day=14, month=10, year=2020)
+		
+		rick.irDeAventurasCon(summer, unMiercoles)
+		assert.equals(rick.getDemencia(), 40)
+	}	
+}
+
+describe "alterar demencia" {
+	test "debería fallar si quedaría en más de 100 al ircon morty" {
+		assert.throwsExceptionWithType(
+			new MuyDementeParaIrDeAventuraException(),
+			{ rick.alterarDemencia(morty) })
+	}
+}
